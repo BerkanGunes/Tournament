@@ -1,5 +1,24 @@
+import json
+from datetime import datetime
+import os
+
+
+class TournamentHistory:
+    def __init__(self, filename="tournament_records.json"):
+        self.filename = filename
+        self.current_tournament = None
+        self.history = {"tournaments": [], "relationship_matrix": {}}
+        self.load_history()
+
+    def load_history(self):
+        if os.path.exists(self.filename):
+            try:
+                with open(self.filename, 'r', encoding='utf-8') as f:
+                    self.history = json.load(f)
+            except json.JSONDecodeError:
+                pass
+
     def _update_transitive_relationships(self):
-        
         matrix = self.history["relationship_matrix"]
         players = list(matrix.keys())
         
