@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="tournament-page">
+    <h2>Aktif Turnuva</h2>
+    
+    <div class="contestants-list">
+        <h3>Katılımcılar</h3>
+        <div class="contestants-grid">
+            {% for contestant in contestants %}
+            <div class="contestant-card">
+                <h4>{{ contestant.isim }}</h4>
+                <p>Puan: {{ contestant.puan }}</p>
+                <p>Tur: {{ contestant.tur }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="current-match">
+        <h3>Mevcut Eşleşme</h3>
+        {% if current_match %}
+        <div class="match-card">
+            <div class="player player1">
+                <h4>{{ current_match.player1.isim }}</h4>
+                <p>Puan: {{ current_match.player1.puan }}</p>
+            </div>
+            <div class="vs">VS</div>
+            <div class="player player2">
+                <h4>{{ current_match.player2.isim }}</h4>
+                <p>Puan: {{ current_match.player2.puan }}</p>
+            </div>
+            <form action="{{ url_for('record_match') }}" method="post" class="match-form">
+                <input type="hidden" name="player1" value="{{ current_match.player1.isim }}">
+                <input type="hidden" name="player2" value="{{ current_match.player2.isim }}">
+                <div class="button-group">
+                    <button type="submit" name="winner" value="{{ current_match.player1.isim }}" class="btn">{{ current_match.player1.isim }} Kazandı</button>
+                    <button type="submit" name="winner" value="{{ current_match.player2.isim }}" class="btn">{{ current_match.player2.isim }} Kazandı</button>
+                </div>
+            </form>
+        </div>
+        {% else %}
+        <p>Şu anda aktif eşleşme yok.</p>
+        {% endif %}
+    </div>
+
+    <div class="relationship-matrix">
+        <h3>İlişki Matrisi</h3>
+        <!-- Matrix will be displayed here -->
+    </div>
+</div>
+{% endblock %} 

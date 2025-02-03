@@ -1,609 +1,92 @@
 {
     "tournaments": [
         {
-            "id": 1,
-            "date": "2025-02-02 17:14:32",
-            "participants": [
-                {
-                    "name": "3",
-                    "initial_points": 0
-                },
-                {
-                    "name": "1",
-                    "initial_points": 0
-                },
-                {
-                    "name": "4",
-                    "initial_points": 0
-                },
-                {
-                    "name": "8",
-                    "initial_points": 0
-                },
-                {
-                    "name": "2",
-                    "initial_points": 0
-                },
-                {
-                    "name": "7",
-                    "initial_points": 0
-                },
-                {
-                    "name": "5",
-                    "initial_points": 0
-                },
-                {
-                    "name": "6",
-                    "initial_points": 0
-                }
-            ],
+            "id": null,
+            "date": null,
+            "participants": [],
             "matches": [
-                {
-                    "round": 1,
-                    "player1": {
-                        "name": "3",
-                        "points_before": -1,
-                        "points_after": -2
-                    },
-                    "player2": {
-                        "name": "1",
-                        "points_before": 1,
-                        "points_after": 2
-                    },
-                    "winner": "1"
-                },
-                {
-                    "round": 1,
-                    "player1": {
-                        "name": "4",
-                        "points_before": 1,
-                        "points_after": 2
-                    },
-                    "player2": {
-                        "name": "8",
-                        "points_before": -1,
-                        "points_after": -2
-                    },
-                    "winner": "4"
-                },
-                {
-                    "round": 1,
-                    "player1": {
-                        "name": "2",
-                        "points_before": -1,
-                        "points_after": -2
-                    },
-                    "player2": {
-                        "name": "7",
-                        "points_before": 1,
-                        "points_after": 2
-                    },
-                    "winner": "7"
-                },
-                {
-                    "round": 1,
-                    "player1": {
-                        "name": "5",
-                        "points_before": 1,
-                        "points_after": 2
-                    },
-                    "player2": {
-                        "name": "6",
-                        "points_before": -1,
-                        "points_after": -2
-                    },
-                    "winner": "5"
-                },
-                {
-                    "round": 2,
-                    "player1": {
-                        "name": "3",
-                        "points_before": -2,
-                        "points_after": -3
-                    },
-                    "player2": {
-                        "name": "8",
-                        "points_before": 0,
-                        "points_after": 1
-                    },
-                    "winner": "8"
-                },
-                {
-                    "round": 2,
-                    "player1": {
-                        "name": "2",
-                        "points_before": 0,
-                        "points_after": 1
-                    },
-                    "player2": {
-                        "name": "6",
-                        "points_before": -2,
-                        "points_after": -3
-                    },
-                    "winner": "2"
-                },
-                {
-                    "round": 2,
-                    "player1": {
-                        "name": "1",
-                        "points_before": 0,
-                        "points_after": -1
-                    },
-                    "player2": {
-                        "name": "4",
-                        "points_before": 2,
-                        "points_after": 3
-                    },
-                    "winner": "4"
-                },
-                {
-                    "round": 2,
-                    "player1": {
-                        "name": "7",
-                        "points_before": 2,
-                        "points_after": 3
-                    },
-                    "player2": {
-                        "name": "5",
-                        "points_before": 0,
-                        "points_after": -1
-                    },
-                    "winner": "7"
-                },
-                {
-                    "round": 3,
-                    "player1": {
-                        "name": "3",
-                        "points_before": -3,
-                        "points_after": -4
-                    },
-                    "player2": {
-                        "name": "6",
-                        "points_before": -1,
-                        "points_after": 0
-                    },
-                    "winner": "6"
-                },
-                {
-                    "round": 3,
-                    "player1": {
-                        "name": "8",
-                        "points_before": 1,
-                        "points_after": 2
-                    },
-                    "player2": {
-                        "name": "2",
-                        "points_before": -1,
-                        "points_after": -2
-                    },
-                    "winner": "8"
-                },
-                {
-                    "round": 3,
-                    "player1": {
-                        "name": "1",
-                        "points_before": -1,
-                        "points_after": -2
-                    },
-                    "player2": {
-                        "name": "5",
-                        "points_before": 1,
-                        "points_after": 2
-                    },
-                    "winner": "5"
-                },
-                {
-                    "round": 3,
-                    "player1": {
-                        "name": "4",
-                        "points_before": 3,
-                        "points_after": 4
-                    },
-                    "player2": {
-                        "name": "7",
-                        "points_before": 1,
-                        "points_after": 0
-                    },
-                    "winner": "4"
-                },
-                {
-                    "round": 4,
-                    "player1": {
-                        "name": "6",
-                        "points_before": -2,
-                        "points_after": -3
-                    },
-                    "player2": {
-                        "name": "2",
-                        "points_before": 0,
-                        "points_after": 1
-                    },
-                    "winner": "2"
-                },
-                {
-                    "round": 4,
-                    "player1": {
-                        "name": "8",
-                        "points_before": 0,
-                        "points_after": -1
-                    },
-                    "player2": {
-                        "name": "5",
-                        "points_before": 2,
-                        "points_after": 3
-                    },
-                    "winner": "5"
-                },
                 {
                     "round": 5,
                     "player1": {
-                        "name": "2",
-                        "points_before": -1,
-                        "points_after": -2
-                    },
-                    "player2": {
-                        "name": "8",
+                        "name": "Erling Haaland",
                         "points_before": 1,
                         "points_after": 2
                     },
-                    "winner": "8"
-                },
-                {
-                    "round": 6,
-                    "player1": {
-                        "name": "2",
-                        "points_before": 0,
-                        "points_after": 1
-                    },
                     "player2": {
-                        "name": "1",
-                        "points_before": -2,
-                        "points_after": -3
-                    },
-                    "winner": "2"
-                },
-                {
-                    "round": 6,
-                    "player1": {
-                        "name": "8",
-                        "points_before": 0,
-                        "points_after": -1
-                    },
-                    "player2": {
-                        "name": "7",
-                        "points_before": 2,
-                        "points_after": 3
-                    },
-                    "winner": "7"
-                },
-                {
-                    "round": 7,
-                    "player1": {
-                        "name": "6",
-                        "points_before": -3,
-                        "points_after": -4
-                    },
-                    "player2": {
-                        "name": "1",
-                        "points_before": -1,
-                        "points_after": 0
-                    },
-                    "winner": "1"
-                },
-                {
-                    "round": 7,
-                    "player1": {
-                        "name": "2",
+                        "name": "Mohamed Salah",
                         "points_before": -1,
                         "points_after": -2
                     },
-                    "player2": {
-                        "name": "8",
-                        "points_before": 1,
-                        "points_after": 2
-                    },
-                    "winner": "8"
-                },
-                {
-                    "round": 7,
-                    "player1": {
-                        "name": "7",
-                        "points_before": 3,
-                        "points_after": 4
-                    },
-                    "player2": {
-                        "name": "5",
-                        "points_before": 1,
-                        "points_after": 0
-                    },
-                    "winner": "7"
-                },
-                {
-                    "round": 8,
-                    "player1": {
-                        "name": "3",
-                        "points_before": -4,
-                        "points_after": -5
-                    },
-                    "player2": {
-                        "name": "6",
-                        "points_before": -2,
-                        "points_after": -1
-                    },
-                    "winner": "6"
-                },
-                {
-                    "round": 8,
-                    "player1": {
-                        "name": "1",
-                        "points_before": -2,
-                        "points_after": -3
-                    },
-                    "player2": {
-                        "name": "2",
-                        "points_before": 0,
-                        "points_after": 1
-                    },
-                    "winner": "2"
-                },
-                {
-                    "round": 8,
-                    "player1": {
-                        "name": "8",
-                        "points_before": 0,
-                        "points_after": -1
-                    },
-                    "player2": {
-                        "name": "5",
-                        "points_before": 2,
-                        "points_after": 3
-                    },
-                    "winner": "5"
-                },
-                {
-                    "round": 8,
-                    "player1": {
-                        "name": "7",
-                        "points_before": 2,
-                        "points_after": 1
-                    },
-                    "player2": {
-                        "name": "4",
-                        "points_before": 4,
-                        "points_after": 5
-                    },
-                    "winner": "4"
-                },
-                {
-                    "round": 9,
-                    "player1": {
-                        "name": "6",
-                        "points_before": -3,
-                        "points_after": -4
-                    },
-                    "player2": {
-                        "name": "1",
-                        "points_before": -1,
-                        "points_after": 0
-                    },
-                    "winner": "1"
-                },
-                {
-                    "round": 9,
-                    "player1": {
-                        "name": "2",
-                        "points_before": -1,
-                        "points_after": -2
-                    },
-                    "player2": {
-                        "name": "8",
-                        "points_before": 1,
-                        "points_after": 2
-                    },
-                    "winner": "8"
-                },
-                {
-                    "round": 9,
-                    "player1": {
-                        "name": "5",
-                        "points_before": 1,
-                        "points_after": 0
-                    },
-                    "player2": {
-                        "name": "7",
-                        "points_before": 3,
-                        "points_after": 4
-                    },
-                    "winner": "7"
-                },
-                {
-                    "round": 10,
-                    "player1": {
-                        "name": "1",
-                        "points_before": -2,
-                        "points_after": -3
-                    },
-                    "player2": {
-                        "name": "2",
-                        "points_before": 0,
-                        "points_after": 1
-                    },
-                    "winner": "2"
-                },
-                {
-                    "round": 10,
-                    "player1": {
-                        "name": "8",
-                        "points_before": 0,
-                        "points_after": -1
-                    },
-                    "player2": {
-                        "name": "5",
-                        "points_before": 2,
-                        "points_after": 3
-                    },
-                    "winner": "5"
-                },
-                {
-                    "round": 11,
-                    "player1": {
-                        "name": "2",
-                        "points_before": -1,
-                        "points_after": -2
-                    },
-                    "player2": {
-                        "name": "8",
-                        "points_before": 1,
-                        "points_after": 2
-                    },
-                    "winner": "8"
+                    "winner": "Erling Haaland"
                 }
             ],
             "final_standings": [
                 {
                     "position": 1,
-                    "name": "4",
-                    "final_points": 4,
-                    "rounds_played": 12
+                    "name": "Lionel Messi",
+                    "final_points": 3,
+                    "rounds_played": 3
                 },
                 {
                     "position": 2,
-                    "name": "7",
-                    "final_points": 3,
-                    "rounds_played": 12
+                    "name": "Cristiano Ronaldo",
+                    "final_points": 2,
+                    "rounds_played": 4
                 },
                 {
                     "position": 3,
-                    "name": "5",
-                    "final_points": 2,
-                    "rounds_played": 12
+                    "name": "Erling Haaland",
+                    "final_points": 1,
+                    "rounds_played": 5
                 },
                 {
                     "position": 4,
-                    "name": "8",
+                    "name": "Kevin De Bruyne",
                     "final_points": 1,
-                    "rounds_played": 12
+                    "rounds_played": 3
                 },
                 {
                     "position": 5,
-                    "name": "2",
+                    "name": "Mohamed Salah",
                     "final_points": -1,
-                    "rounds_played": 12
+                    "rounds_played": 5
                 },
                 {
                     "position": 6,
-                    "name": "1",
-                    "final_points": -2,
-                    "rounds_played": 12
+                    "name": "Jude Bellingham",
+                    "final_points": -1,
+                    "rounds_played": 3
                 },
                 {
                     "position": 7,
-                    "name": "6",
-                    "final_points": -3,
-                    "rounds_played": 12
+                    "name": "Kylian Mbappe",
+                    "final_points": -2,
+                    "rounds_played": 4
                 },
                 {
                     "position": 8,
-                    "name": "3",
-                    "final_points": -4,
-                    "rounds_played": 12
+                    "name": "Vinicius Junior",
+                    "final_points": -3,
+                    "rounds_played": 3
                 }
             ]
         }
     ],
     "relationship_matrix": {
         "players": [
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"
+            "Erling Haaland",
+            "Mohamed Salah"
         ],
         "matrix": {
-            "1": {
-                "1": 0,
-                "3": 1,
-                "4": 0,
-                "8": 0,
-                "2": 0,
-                "7": 0,
-                "5": 0,
-                "6": 1
+            "Erling Haaland": {
+                "Erling Haaland": 0,
+                "Mohamed Salah": 1
             },
-            "3": {
-                "1": 0,
-                "3": 0,
-                "4": 0,
-                "8": 0,
-                "2": 0,
-                "7": 0,
-                "5": 0,
-                "6": 0
-            },
-            "4": {
-                "1": 1,
-                "3": 1,
-                "4": 0,
-                "8": 1,
-                "2": 1,
-                "7": 1,
-                "5": 1,
-                "6": 1
-            },
-            "8": {
-                "1": 1,
-                "3": 1,
-                "4": 0,
-                "8": 0,
-                "2": 1,
-                "7": 0,
-                "5": 0,
-                "6": 1
-            },
-            "2": {
-                "1": 1,
-                "2": 0,
-                "3": 1,
-                "4": 0,
-                "8": 0,
-                "7": 0,
-                "5": 0,
-                "6": 1
-            },
-            "7": {
-                "1": 1,
-                "2": 1,
-                "3": 1,
-                "4": 0,
-                "7": 0,
-                "8": 1,
-                "5": 1,
-                "6": 1
-            },
-            "5": {
-                "1": 1,
-                "2": 1,
-                "3": 1,
-                "4": 0,
-                "5": 0,
-                "7": 0,
-                "8": 1,
-                "6": 1
-            },
-            "6": {
-                "1": 0,
-                "2": 0,
-                "3": 1,
-                "4": 0,
-                "5": 0,
-                "6": 0,
-                "7": 0,
-                "8": 0
+            "Mohamed Salah": {
+                "Erling Haaland": 0,
+                "Mohamed Salah": 0
             }
         },
-        "last_updated": "2025-02-02 17:14:45"
+        "last_updated": "2025-02-03 16:21:54"
     }
 }

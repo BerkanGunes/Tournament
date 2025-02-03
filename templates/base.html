@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Turnuva Sistemi</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="container">
+          <h1><a href="{{ url_for('index') }}">Turnuva Sistemi</a></h1>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      {% with messages = get_flashed_messages() %} {% if messages %}
+      <div class="messages">
+        {% for message in messages %}
+        <div class="message">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %} {% endwith %} {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2024 Turnuva Sistemi</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="upload-section">
+    <h2>Yeni Turnuva Başlat</h2>
+    <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data" class="upload-form">
+        <div class="form-group">
+            <label for="file">Katılımcı Listesi (TXT):</label>
+            <input type="file" id="file" name="file" accept=".txt" required>
+        </div>
+        <button type="submit" class="btn">Turnuva Başlat</button>
+    </form>
+</div>
+
+<div class="tournaments-section">
+    <h2>Önceki Turnuvalar</h2>
+    {% if tournaments.tournaments %}
+        <div class="tournaments-list">
+            {% for tournament in tournaments.tournaments %}
+            <div class="tournament-card">
+                <h3>Turnuva #{{ tournament.id }}</h3>
+                <p>Tarih: {{ tournament.date }}</p>
+                <p>Katılımcı Sayısı: {{ tournament.participants|length }}</p>
+                <div class="tournament-standings">
+                    <h4>Sonuçlar:</h4>
+                    <ul>
+                        {% for standing in tournament.final_standings[:3] %}
+                        <li>{{ standing.position }}. {{ standing.name }} ({{ standing.final_points }} puan)</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Henüz turnuva yapılmamış.</p>
+    {% endif %}
+</div>
+{% endblock %} 
