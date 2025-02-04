@@ -1,18 +1,8 @@
-# Main tournament system implementation
-# This file handles the tournament bracket system with the following features:
-# - Supports variable number of participants by filling with dummy "BOŞ" (empty) slots
-# - Implements a tournament system with points and rounds
-# - Tracks match history and prevents repeat matches
-# - Integrates with TournamentHistory for persistent record keeping
-
 import random
 import math
 from tournament_history import TournamentHistory
 
-# Participant Management
-# ---------------------
-# Fills the participant list to the next power of 2 with dummy entries
-# This ensures the bracket system works properly with any number of real participants
+
 def fill_participants(elements):
     """
     Katılımcı sayısını 2'nin kuvveti olacak şekilde BOŞ elemanlarla tamamlar
@@ -24,19 +14,11 @@ def fill_participants(elements):
     for i in range(empty_slots):
         elements.append({
             "isim": f"BOŞ_{i}", 
-            "puan": -500 - i,  # Boş elemanlara düşük başlangıç puanı
+            "puan": -500 - i, 
             "tur": 0
         })
     
     return elements
-
-# Tournament Bracket System
-# -----------------------
-# Core tournament logic that:
-# - Groups participants by rounds and points
-# - Handles matches between participants
-# - Processes automatic wins against dummy entries
-# - Prevents repeat matches using tournament history
 def run_bracket(elements, history):
     """
     Turnuva başlatır ve eşit tur ve puana sahip olanları eşleştirir.
@@ -58,8 +40,6 @@ def run_bracket(elements, history):
                 if i + 1 < len(group):
                     elem1 = group[i]
                     elem2 = group[i + 1]
-
-                    # BOŞ elemanla eşleşme durumu
                     if "BOŞ" in elem1["isim"] or "BOŞ" in elem2["isim"]:
                         winner = elem1 if "BOŞ" not in elem1["isim"] else elem2
                         loser = elem2 if "BOŞ" not in elem1["isim"] else elem1
@@ -69,7 +49,7 @@ def run_bracket(elements, history):
                         loser["tur"] += 1
                         next_round.extend([winner, loser])
                         
-                        # Record match in history
+                        
                         if "BOŞ" not in winner["isim"] and "BOŞ" not in loser["isim"]:
                             history.record_match(round_number, elem1, elem2, winner, loser)
                         
@@ -78,7 +58,7 @@ def run_bracket(elements, history):
 
                     print(f"\n1: {elem1['isim']} (Puan: {elem1['puan']}, Tur: {elem1['tur']}) vs 2: {elem2['isim']} (Puan: {elem2['puan']}, Tur: {elem2['tur']})")
                     
-                    # Check if these players have met before
+                    
                     previous_winner = history.get_previous_match_winner(elem1["isim"], elem2["isim"])
                     if previous_winner:
                         print(f"Bu oyuncular daha önce karşılaşmış. Önceki sonuç kullanılıyor: {previous_winner} kazandı.")
@@ -100,7 +80,7 @@ def run_bracket(elements, history):
                     elem2["tur"] += 1
                     next_round.extend([elem1, elem2])
                     
-                    # Record match in history
+                    
                     history.record_match(round_number, elem1, elem2, winner, loser)
                     
                     changes_made = True
@@ -115,11 +95,11 @@ def run_bracket(elements, history):
         if not changes_made:
             break
 
-    # Sadece gerçek katılımcıları göster
+   
     real_elements = [elem for elem in elements if "BOŞ" not in elem["isim"]]
     real_elements.sort(key=lambda x: x["puan"], reverse=True)
     
-    # Record final standings
+    
     history.record_final_standings(real_elements)
     
     print("\nTurnuva sona erdi! Sonuçlar:")
@@ -128,20 +108,14 @@ def run_bracket(elements, history):
 
     return elements
 
-# Main Program Entry
-# ----------------
-# Sets up the tournament with:
-# - Initial participant list
-# - Random participant shuffling
-# - Tournament history tracking
-# - Bracket execution and result saving
+
 def main():
     print("Puan ve Tur Sistemli Turnuvaya Hoş Geldiniz!")
 
-    # Initialize tournament history
+    
     history = TournamentHistory()
 
-    # 8 elemanlı liste
+    
     elements = [
         {"isim": "1", "puan": 0, "tur": 0},
         {"isim": "2", "puan": 0, "tur": 0},
@@ -153,13 +127,13 @@ def main():
         {"isim": "8", "puan": 0, "tur": 0}
     ]
 
-    # Elemanları karıştır
+    
     random.shuffle(elements)
     
-    # Start new tournament in history
+    
     history.start_new_tournament(elements)
     
-    # Boş elemanlarla tamamla
+    
     elements = fill_participants(elements)
 
     print("\nKatılımcılar:")
@@ -169,7 +143,6 @@ def main():
 
     run_bracket(elements, history)
     
-    # Save tournament results
     history.save_tournament()
     
     print("\nTurnuva kaydedildi! Sonuçları tournament_records.json dosyasında bulabilirsiniz.")

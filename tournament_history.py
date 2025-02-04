@@ -1,11 +1,3 @@
-# Tournament History Management System
-# -------------------------------
-# This class manages persistent tournament records with features:
-# - JSON-based storage of tournament data
-# - Relationship matrix tracking for match outcomes
-# - Transitive relationship tracking (if A beats B and B beats C, then A beats C)
-# - Player statistics and match history
-
 import json
 from datetime import datetime
 import os
@@ -23,9 +15,6 @@ class TournamentHistory:
         self.load_history()
         self.previous_matches = {}
 
-    # File Operations
-    # --------------
-    # Methods for loading and saving tournament data to persistent storage
     def load_history(self):
         """Load existing tournament history or create new file if it doesn't exist"""
         if os.path.exists(self.filename):
@@ -58,10 +47,6 @@ class TournamentHistory:
                 key2 = f"{player2}-{player1}"
                 self.previous_matches[key1] = winner
                 self.previous_matches[key2] = winner
-
-    # Match History and Relationships
-    # -----------------------------
-    # Methods for tracking match outcomes and maintaining the relationship matrix
     def get_previous_match_winner(self, player1_name, player2_name):
         """Check if these players have met before or if there's a transitive relationship"""
         matrix_data = self.history["relationship_matrix"]
@@ -133,9 +118,7 @@ class TournamentHistory:
                                 changes_made = True
                                 print(f"\nOtomatik İlişki: {c} -> {b} (Geçişli özellik: {c} -> {a} -> {b})")
 
-    # Tournament Recording
-    # ------------------
-    # Methods for recording new tournaments, matches, and final standings
+    
     def start_new_tournament(self, participants):
         """Start recording a new tournament"""
         self.current_tournament = {
@@ -186,9 +169,7 @@ class TournamentHistory:
             if "BOŞ" not in player["isim"]
         ]
 
-    # Data Display and Retrieval
-    # ------------------------
-    # Methods for viewing and analyzing tournament data
+    
     def display_relationship_matrix(self):
         """Display the stored relationship matrix"""
         if not self.history["relationship_matrix"]:
