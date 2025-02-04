@@ -1,7 +1,18 @@
+# Main tournament system implementation
+# This file handles the tournament bracket system with the following features:
+# - Supports variable number of participants by filling with dummy "BOŞ" (empty) slots
+# - Implements a tournament system with points and rounds
+# - Tracks match history and prevents repeat matches
+# - Integrates with TournamentHistory for persistent record keeping
+
 import random
 import math
 from tournament_history import TournamentHistory
 
+# Participant Management
+# ---------------------
+# Fills the participant list to the next power of 2 with dummy entries
+# This ensures the bracket system works properly with any number of real participants
 def fill_participants(elements):
     """
     Katılımcı sayısını 2'nin kuvveti olacak şekilde BOŞ elemanlarla tamamlar
@@ -19,6 +30,13 @@ def fill_participants(elements):
     
     return elements
 
+# Tournament Bracket System
+# -----------------------
+# Core tournament logic that:
+# - Groups participants by rounds and points
+# - Handles matches between participants
+# - Processes automatic wins against dummy entries
+# - Prevents repeat matches using tournament history
 def run_bracket(elements, history):
     """
     Turnuva başlatır ve eşit tur ve puana sahip olanları eşleştirir.
@@ -110,7 +128,13 @@ def run_bracket(elements, history):
 
     return elements
 
-
+# Main Program Entry
+# ----------------
+# Sets up the tournament with:
+# - Initial participant list
+# - Random participant shuffling
+# - Tournament history tracking
+# - Bracket execution and result saving
 def main():
     print("Puan ve Tur Sistemli Turnuvaya Hoş Geldiniz!")
 
@@ -152,4 +176,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    

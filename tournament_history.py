@@ -1,3 +1,11 @@
+# Tournament History Management System
+# -------------------------------
+# This class manages persistent tournament records with features:
+# - JSON-based storage of tournament data
+# - Relationship matrix tracking for match outcomes
+# - Transitive relationship tracking (if A beats B and B beats C, then A beats C)
+# - Player statistics and match history
+
 import json
 from datetime import datetime
 import os
@@ -15,6 +23,9 @@ class TournamentHistory:
         self.load_history()
         self.previous_matches = {}
 
+    # File Operations
+    # --------------
+    # Methods for loading and saving tournament data to persistent storage
     def load_history(self):
         """Load existing tournament history or create new file if it doesn't exist"""
         if os.path.exists(self.filename):
@@ -48,6 +59,9 @@ class TournamentHistory:
                 self.previous_matches[key1] = winner
                 self.previous_matches[key2] = winner
 
+    # Match History and Relationships
+    # -----------------------------
+    # Methods for tracking match outcomes and maintaining the relationship matrix
     def get_previous_match_winner(self, player1_name, player2_name):
         """Check if these players have met before or if there's a transitive relationship"""
         matrix_data = self.history["relationship_matrix"]
@@ -58,43 +72,6 @@ class TournamentHistory:
                 return player2_name
         key = f"{player1_name}-{player2_name}"
         return self.previous_matches.get(key)
-
-    def start_new_tournament(self, participants):
-        """Start recording a new tournament"""
-        self.current_tournament = {
-            "id": len(self.history["tournaments"]) + 1,
-            "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "participants": [{"name": p["isim"], "initial_points": p["puan"]} 
-                           for p in participants if "BOŞ" not in p["isim"]],
-            "matches": [],
-            "final_standings": []
-        }
-
-    def record_match(self, round_number, player1, player2, winner, loser):
-        """Record a single match result and update the relationship matrix"""
-        match = {
-            "round": round_number,
-            "player1": {
-                "name": player1["isim"],
-                "points_before": player1["puan"],
-                "points_after": player1["puan"] + (1 if player1 == winner else -1)
-            },
-            "player2": {
-                "name": player2["isim"],
-                "points_before": player2["puan"],
-                "points_after": player2["puan"] + (1 if player2 == winner else -1)
-            },
-            "winner": winner["isim"]
-        }
-        self.current_tournament["matches"].append(match)
-        
-        key1 = f"{player1['isim']}-{player2['isim']}"
-        key2 = f"{player2['isim']}-{player1['isim']}"
-        self.previous_matches[key1] = winner["isim"]
-        self.previous_matches[key2] = winner["isim"]
-
-        self.update_matrix_for_match(player1["isim"], player2["isim"], winner["isim"])
-        self.display_relationship_matrix()
 
     def update_matrix_for_match(self, player1, player2, winner):
         """Update relationship matrix for a single match"""
@@ -156,6 +133,46 @@ class TournamentHistory:
                                 changes_made = True
                                 print(f"\nOtomatik İlişki: {c} -> {b} (Geçişli özellik: {c} -> {a} -> {b})")
 
+    # Tournament Recording
+    # ------------------
+    # Methods for recording new tournaments, matches, and final standings
+    def start_new_tournament(self, participants):
+        """Start recording a new tournament"""
+        self.current_tournament = {
+            "id": len(self.history["tournaments"]) + 1,
+            "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "participants": [{"name": p["isim"], "initial_points": p["puan"]} 
+                           for p in participants if "BOŞ" not in p["isim"]],
+            "matches": [],
+            "final_standings": []
+        }
+
+    def record_match(self, round_number, player1, player2, winner, loser):
+        """Record a single match result and update the relationship matrix"""
+        match = {
+            "round": round_number,
+            "player1": {
+                "name": player1["isim"],
+                "points_before": player1["puan"],
+                "points_after": player1["puan"] + (1 if player1 == winner else -1)
+            },
+            "player2": {
+                "name": player2["isim"],
+                "points_before": player2["puan"],
+                "points_after": player2["puan"] + (1 if player2 == winner else -1)
+            },
+            "winner": winner["isim"]
+        }
+        self.current_tournament["matches"].append(match)
+        
+        key1 = f"{player1['isim']}-{player2['isim']}"
+        key2 = f"{player2['isim']}-{player1['isim']}"
+        self.previous_matches[key1] = winner["isim"]
+        self.previous_matches[key2] = winner["isim"]
+
+        self.update_matrix_for_match(player1["isim"], player2["isim"], winner["isim"])
+        self.display_relationship_matrix()
+
     def record_final_standings(self, standings):
         """Record the final tournament standings"""
         self.current_tournament["final_standings"] = [
@@ -169,6 +186,9 @@ class TournamentHistory:
             if "BOŞ" not in player["isim"]
         ]
 
+    # Data Display and Retrieval
+    # ------------------------
+    # Methods for viewing and analyzing tournament data
     def display_relationship_matrix(self):
         """Display the stored relationship matrix"""
         if not self.history["relationship_matrix"]:
@@ -196,13 +216,6 @@ class TournamentHistory:
         print("\nOyuncu Referansları:")
         for i, player in enumerate(players):
             print(f"{i}: {player}")
-
-    def save_tournament(self):
-        """Save the current tournament to history"""
-        self.history["tournaments"].append(self.current_tournament)
-        with open(self.filename, 'w', encoding='utf-8') as f:
-            json.dump(self.history, f, indent=4, ensure_ascii=False)
-        self.display_relationship_matrix()
 
     def get_tournament_history(self):
         """Return all tournament history"""
@@ -244,4 +257,11 @@ class TournamentHistory:
             if participated:
                 player_history["tournaments_participated"] += 1
 
-        return player_history 
+        return player_history
+
+    def save_tournament(self):
+        """Save the current tournament to history"""
+        self.history["tournaments"].append(self.current_tournament)
+        with open(self.filename, 'w', encoding='utf-8') as f:
+            json.dump(self.history, f, indent=4, ensure_ascii=False)
+        self.display_relationship_matrix() 
