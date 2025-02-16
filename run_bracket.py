@@ -1,24 +1,3 @@
-import random
-import math
-from tournament_history import TournamentHistory
-
-
-def fill_participants(elements):
-    """
-    Katılımcı sayısını 2'nin kuvveti olacak şekilde BOŞ elemanlarla tamamlar
-    """
-    n = len(elements)
-    next_power_of_2 = 2 ** math.ceil(math.log2(n))
-    empty_slots = next_power_of_2 - n
-    
-    for i in range(empty_slots):
-        elements.append({
-            "isim": f"BOŞ_{i}", 
-            "puan": -500 - i, 
-            "tur": 0
-        })
-    
-    return elements
 def run_bracket(elements, history):
     """
     Turnuva başlatır ve eşit tur ve puana sahip olanları eşleştirir.
@@ -109,43 +88,3 @@ def run_bracket(elements, history):
     return elements
 
 
-def main():
-    print("Puan ve Tur Sistemli Turnuvaya Hoş Geldiniz!")
-
-    
-    history = TournamentHistory()
-
-    
-    elements = [
-        {"isim": "1", "puan": 0, "tur": 0},
-        {"isim": "2", "puan": 0, "tur": 0},
-        {"isim": "3", "puan": 0, "tur": 0},
-        {"isim": "4", "puan": 0, "tur": 0},
-        {"isim": "5", "puan": 0, "tur": 0},
-        {"isim": "6", "puan": 0, "tur": 0},
-        {"isim": "7", "puan": 0, "tur": 0},
-        {"isim": "8", "puan": 0, "tur": 0}
-    ]
-
-    
-    random.shuffle(elements)
-    
-    
-    history.start_new_tournament(elements)
-    
-    
-    elements = fill_participants(elements)
-
-    print("\nKatılımcılar:")
-    for elem in elements:
-        if "BOŞ" not in elem["isim"]:
-            print(f"- {elem['isim']}")
-
-    run_bracket(elements, history)
-    
-    history.save_tournament()
-    
-    print("\nTurnuva kaydedildi! Sonuçları tournament_records.json dosyasında bulabilirsiniz.")
-
-if __name__ == "__main__":
-    main()
